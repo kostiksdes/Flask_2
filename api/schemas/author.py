@@ -5,6 +5,8 @@ from api.models.author import AuthorModel
 class AuthorSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = AuthorModel
+        #fields = ("name",) #только нужные поля
+        #exlude = ("id", )
 
 
 author_schema = AuthorSchema()
