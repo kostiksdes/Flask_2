@@ -24,8 +24,9 @@ class AuthorResource(Resource):
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument("name", required=True)
+        parser.add_argument("surname", required=True)
         author_data = parser.parse_args()
-        author = AuthorModel(author_data["name"])
+        author = AuthorModel(**author_data)
         db.session.add(author)
         db.session.commit()
         return author_schema.dump(author), 201
